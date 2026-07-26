@@ -1,1 +1,58 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; }
+  body { @apply bg-gray-50 text-gray-900 font-sans text-sm; }
+}
+
+@layer components {
+  /* Buttons */
+  .btn { @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-md transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-40 disabled:cursor-not-allowed select-none; }
+  .btn-primary { @apply btn bg-gray-900 text-white hover:bg-gray-700 focus:ring-gray-900; }
+  .btn-secondary { @apply btn bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-gray-400; }
+  .btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-500; }
+  .btn-success { @apply btn bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500; }
+  .btn-ghost { @apply btn bg-transparent text-gray-600 hover:bg-gray-100 focus:ring-gray-300; }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+  .btn-lg { @apply px-6 py-3 text-base; }
+
+  /* Inputs */
+  .field-label { @apply block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1; }
+  .field-input { @apply w-full px-3 py-2 text-sm bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent placeholder:text-gray-400 transition; }
+  .field-input-error { @apply border-red-400 focus:ring-red-400; }
+  .field-error { @apply text-xs text-red-600 mt-1; }
+
+  /* Badges */
+  .badge { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold; }
+  .badge-pending  { @apply badge bg-amber-50 text-amber-700 ring-1 ring-amber-200; }
+  .badge-verified { @apply badge bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200; }
+  .badge-rejected { @apply badge bg-red-50 text-red-700 ring-1 ring-red-200; }
+  .badge-super_admin { @apply badge bg-gray-900 text-white; }
+  .badge-admin    { @apply badge bg-gray-600 text-white; }
+  .badge-user     { @apply badge bg-gray-100 text-gray-700 ring-1 ring-gray-300; }
+
+  /* Table */
+  .tbl-th { @apply px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200; }
+  .tbl-td { @apply px-4 py-3 text-sm text-gray-800 border-b border-gray-100; }
+  .tbl-tr { @apply hover:bg-gray-50/80 transition-colors; }
+
+  /* Card */
+  .card { @apply bg-white border border-gray-200 rounded-xl shadow-sm; }
+  .card-header { @apply px-6 py-4 border-b border-gray-100 flex items-center justify-between; }
+  .card-body { @apply px-6 py-5; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* Animations */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
