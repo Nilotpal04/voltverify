@@ -6,6 +6,8 @@ import { StatusBadge } from '../components/common/Badge'
 import { InlineLoader } from '../components/common/Spinner'
 import { fmtDate, canVerify } from '../utils/helpers'
 
+import ExportDocuments from "../components/documents/ExportDocuments";
+
 function StatCard({ label, value, sub, color = 'gray' }) {
   const colors = {
     gray: 'bg-white border-gray-200',
@@ -41,7 +43,19 @@ export default function DashboardPage() {
           <h1 className="text-xl font-bold text-gray-900">Dashboard</h1>
           <p className="text-sm text-gray-400 mt-0.5">Welcome back, {user?.username}</p>
         </div>
-        <Link to="/upload" className="btn-primary btn-sm">
+        <div className="flex gap-2">
+          {(user?.role === "admin" ||
+            user?.role === "super_admin") && (
+              <ExportDocuments />
+          )}
+
+          <Link
+              to="/upload"
+              className="btn-primary btn-sm"
+          >
+              Upload
+          </Link>
+      </div>
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
           </svg>
