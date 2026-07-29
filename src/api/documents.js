@@ -11,7 +11,14 @@ export const documentsApi = {
     reject: (id, body) => api.post(`/documents/${id}/reject`, body),
     audit: (id) => api.get(`/documents/${id}/audit`),
 
-    // Fetches the raw file as a Blob so we can create an object URL for preview.
-    // The Authorization header is injected automatically by the axios interceptor.
+    export: (startDate, endDate) =>
+        api.get("/documents/export", {
+            params: {
+                start_date: startDate,
+                end_date: endDate,
+            },
+            responseType: "blob",
+        }),
+        
     file: (id) => api.get(`/documents/${id}/file`, { responseType: "blob" }),
 };
